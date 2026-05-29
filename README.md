@@ -2,9 +2,6 @@
 
 A responsive and interactive webpage created for **She Can Foundation** — a youth-driven NGO working towards empowering women and girls through education, digital initiatives, and community-driven programs.
 
-## 🌐 Live Demo
-[Click here to view the website](https://karanamsreenivas.github.io/she-can-foundation)
-
 ## 📌 Features
 - NGO Name & Branding
 - Hero Section with Animations
