@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>She Can Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#c2185b;--rose2:#e91e8c;--rose-pale:#fce4ec;--rose-light:#f8bbd9;
+  --gold:#f5c518;--cream:#fdf6f0;--ink:#1a0a14;--muted:#7b4b6a;
+  --white:#ffffff;--card:#fff9fc;
+}
+@media(prefers-color-scheme:dark){
+  :root{--cream:#120710;--white:#1e0d18;--card:#250d1e;--ink:#f5e8f0;--muted:#c498b2;--rose-pale:#2e0a1f;--rose-light:#5a1535}
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.1rem 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.solid{background:var(--white);box-shadow:0 2px 24px rgba(194,24,91,.08)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--rose);text-decoration:none;letter-spacing:.04em}
+.logo span{font-style:italic;font-weight:300}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink);font-size:.875rem;font-weight:500;letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover{color:var(--rose)}
+.nav-cta{background:var(--rose);color:#fff!important;padding:.5rem 1.4rem;border-radius:99px;transition:background .2s,transform .2s!important}
+.nav-cta:hover{background:#a31550!important;transform:translateY(-1px)!important}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 6% 4rem;gap:4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-circle{position:absolute;border-radius:50%;opacity:.07;animation:pulse 6s ease-in-out infinite}
+.hero-circle:nth-child(1){width:600px;height:600px;background:var(--rose);top:-100px;right:-150px;animation-delay:0s}
+.hero-circle:nth-child(2){width:400px;height:400px;background:var(--rose2);bottom:-80px;left:-100px;animation-delay:2s}
+.hero-circle:nth-child(3){width:200px;height:200px;background:var(--gold);top:40%;left:40%;animation-delay:4s;opacity:.05}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+
+.hero-text{position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin-bottom:1.4rem}
+.eyebrow::before{content:'';width:28px;height:1.5px;background:var(--rose)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:300;line-height:1.05;margin-bottom:1.6rem;letter-spacing:-.01em}
+.hero h1 strong{font-weight:600;display:block}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero-desc{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:460px;margin-bottom:2.4rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--rose);color:#fff;padding:.9rem 2.2rem;border-radius:99px;font-size:.95rem;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .25s;letter-spacing:.02em}
+.btn-primary:hover{background:#a31550;transform:translateY(-3px);box-shadow:0 14px 32px rgba(194,24,91,.3)}
+.btn-outline{background:transparent;color:var(--rose);padding:.9rem 2.2rem;border-radius:99px;font-size:.95rem;font-weight:500;text-decoration:none;border:2px solid var(--rose);transition:all .25s;letter-spacing:.02em}
+.btn-outline:hover{background:var(--rose-pale);transform:translateY(-2px)}
+
+/* Hero Visual */
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
+.hero-frame{position:relative;width:100%;max-width:480px}
+.hero-main-img{width:100%;height:500px;border-radius:24px 80px 24px 80px;background:linear-gradient(145deg,#f8bbd9 0%,#ce93d8 40%,#c2185b 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.hero-main-img svg{width:100%;height:100%;position:absolute;inset:0}
+.hero-badge{position:absolute;bottom:-18px;left:-24px;background:var(--white);border-radius:16px;padding:1rem 1.4rem;box-shadow:0 8px 32px rgba(194,24,91,.15);display:flex;align-items:center;gap:.8rem;min-width:190px}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--rose);line-height:1}
+.badge-text{font-size:.75rem;color:var(--muted);font-weight:500;line-height:1.3}
+.hero-tag2{position:absolute;top:-16px;right:-20px;background:var(--rose);color:#fff;border-radius:12px;padding:.7rem 1.2rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap{background:var(--rose);padding:.75rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:0;animation:scroll 22s linear infinite}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:inline-flex;align-items:center;gap:.8rem;padding:0 2.5rem;color:rgba(255,255,255,.85);font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+.marquee-dot{width:5px;height:5px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0}
+
+/* ─── STATS ─── */
+.stats-section{padding:5rem 6%;max-width:1200px;margin:0 auto}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border:1px solid rgba(194,24,91,.15);border-radius:20px;overflow:hidden}
+.stat-box{padding:2.5rem 2rem;text-align:center;background:var(--card);transition:background .3s}
+.stat-box:hover{background:var(--rose-pale)}
+.stat-box+.stat-box{border-left:1px solid rgba(194,24,91,.15)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;color:var(--rose);display:block;line-height:1}
+.stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.4rem;font-weight:500}
+
+/* ─── ABOUT ─── */
+.about-section{padding:6rem 6%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:5rem;align-items:center}
+.about-mosaic{position:relative;height:540px}
+.mosaic-a{position:absolute;top:0;left:0;width:68%;height:72%;border-radius:24px;background:linear-gradient(135deg,#f8bbd9,#c2185b);overflow:hidden}
+.mosaic-b{position:absolute;bottom:0;right:0;width:58%;height:60%;border-radius:24px;background:linear-gradient(135deg,#ce93d8,#7b1fa2);overflow:hidden}
+.mosaic-quote{position:absolute;top:50%;right:-10px;transform:translateY(-50%);background:var(--white);border-radius:16px;padding:1.2rem 1.4rem;box-shadow:0 12px 36px rgba(0,0,0,.1);max-width:180px;z-index:3}
+.mosaic-quote p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--rose);line-height:1.4}
+.mosaic-quote cite{font-size:.7rem;color:var(--muted);font-style:normal;font-weight:600;letter-spacing:.05em;text-transform:uppercase;display:block;margin-top:.5rem}
+.img-art{width:100%;height:100%;display:block}
+
+.about-content{}
+.section-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.section-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--rose)}
+.about-content h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.about-content h2 em{font-style:italic;color:var(--rose)}
+.about-content p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:1rem;font-weight:300}
+.mission-list{margin:1.5rem 0 2rem;list-style:none}
+.mission-list li{display:flex;align-items:flex-start;gap:.8rem;margin-bottom:.9rem;font-size:.95rem;color:var(--ink);font-weight:400}
+.mission-icon{width:26px;height:26px;border-radius:50%;background:var(--rose-pale);color:var(--rose);display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:.1rem}
+
+/* ─── PROGRAMS ─── */
+.programs-section{background:var(--rose-pale);padding:6rem 6%}
+.programs-inner{max-width:1200px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:3.5rem}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;margin-bottom:.6rem}
+.sec-head h2 em{font-style:italic;color:var(--rose)}
+.sec-head p{color:var(--muted);font-size:1rem;font-weight:300}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.prog-card{background:var(--white);border-radius:20px;padding:2rem 1.8rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:default}
+.prog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose),var(--rose2))}
+.prog-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(194,24,91,.15)}
+.prog-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:600;color:rgba(194,24,91,.08);position:absolute;top:.5rem;right:1.2rem;line-height:1;pointer-events:none;user-select:none}
+.prog-icon{font-size:2rem;margin-bottom:1.2rem;display:block}
+.prog-card h3{font-size:1.1rem;font-weight:600;margin-bottom:.6rem;color:var(--ink)}
+.prog-card p{font-size:.875rem;color:var(--muted);line-height:1.65;font-weight:300}
+.prog-link{display:inline-flex;align-items:center;gap:.3rem;margin-top:1rem;font-size:.8rem;font-weight:600;color:var(--rose);text-decoration:none;letter-spacing:.04em;transition:gap .2s}
+.prog-link:hover{gap:.6rem}
+
+/* ─── TESTIMONIAL ─── */
+.testimonial-section{padding:6rem 6%;max-width:900px;margin:0 auto;text-align:center}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:8rem;line-height:.5;color:var(--rose-light);display:block;margin-bottom:1rem}
+.testimonial-section blockquote{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;font-style:italic;line-height:1.4;color:var(--ink);margin-bottom:2rem}
+.testimonial-section blockquote em{color:var(--rose);font-style:normal;font-weight:600}
+.testi-author{display:flex;align-items:center;justify-content:center;gap:1rem}
+.author-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#f8bbd9,#c2185b);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff}
+.author-info{text-align:left}
+.author-info strong{display:block;font-size:.9rem;font-weight:600}
+.author-info span{font-size:.8rem;color:var(--muted)}
+
+/* ─── CTA ─── */
+.cta-section{margin:0 6% 5rem;border-radius:28px;background:linear-gradient(135deg,#c2185b 0%,#880e4f 50%,#4a148c 100%);padding:5rem 8%;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#fff;margin-bottom:1rem;position:relative}
+.cta-section h2 em{font-style:italic;font-weight:600}
+.cta-section p{color:rgba(255,255,255,.75);font-size:1.05rem;margin-bottom:2.5rem;font-weight:300;position:relative}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-white{background:#fff;color:var(--rose);padding:.9rem 2.4rem;border-radius:99px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .25s}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+.btn-ghost{background:transparent;color:#fff;padding:.9rem 2.4rem;border-radius:99px;font-size:.95rem;font-weight:500;text-decoration:none;border:2px solid rgba(255,255,255,.5);transition:all .25s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:4rem 6% 2rem}
+.footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:3rem;max-width:1200px;margin:0 auto 2.5rem}
+.footer-brand .logo{display:inline-block;margin-bottom:1rem}
+.footer-brand p{font-size:.875rem;line-height:1.7;color:rgba(255,255,255,.5);max-width:280px;font-weight:300}
+.footer-social{display:flex;gap:.8rem;margin-top:1.5rem}
+.social-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.75rem;font-weight:600;transition:all .2s;text-decoration:none}
+.social-btn:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.footer-col h4{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rose-light);margin-bottom:1.2rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.65rem}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.875rem;transition:color .2s;font-weight:300}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:rgba(255,255,255,.3)}
+.footer-heart{color:var(--rose-light)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:8rem}
+  .hero-desc{margin:0 auto 2.4rem}
+  .hero-actions{justify-content:center}
+  .hero-visual{display:none}
+  .about-section{grid-template-columns:1fr}
+  .about-mosaic{height:300px;margin-bottom:1rem}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-box+.stat-box{border-left:none}
+  .stat-box:nth-child(odd){border-right:1px solid rgba(194,24,91,.15)}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+  nav .nav-links{display:none}
+  .cta-section{margin:0 0 4rem;border-radius:0}
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.up{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.up{opacity:1;transform:none}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.up{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">She <span>Can</span> Foundation</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#footer" class="nav-cta">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+  <div class="hero-text">
+    <div class="eyebrow">Empowering Women Since 2012</div>
+    <h1>
+      <em>She Can.</em>
+      <strong>She Will.</strong>
+      She Does.
+    </h1>
+    <p class="hero-desc">Breaking barriers and building futures — one courageous woman at a time. We believe every girl deserves the freedom to dream, learn, and lead.</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn-primary">Explore Our Work</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-frame">
+      <div class="hero-main-img">
+        <svg viewBox="0 0 480 500" xmlns="http://www.w3.org/2000/svg" class="img-art">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#fff" stop-opacity=".3"/><stop offset="100%" stop-color="#c2185b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="480" height="500" fill="#e91e8c" opacity=".15"/>
+          <ellipse cx="240" cy="380" rx="180" ry="60" fill="#880e4f" opacity=".3"/>
+          <!-- central figure -->
+          <circle cx="240" cy="160" r="70" fill="#fff" opacity=".25"/>
+          <circle cx="240" cy="150" r="50" fill="#fff" opacity=".35"/>
+          <ellipse cx="240" cy="300" rx="65" ry="95" fill="#fff" opacity=".22"/>
+          <!-- arms raised -->
+          <path d="M175 240 Q140 180 120 150" stroke="#fff" stroke-width="14" stroke-linecap="round" fill="none" opacity=".4"/>
+          <path d="M305 240 Q340 180 360 150" stroke="#fff" stroke-width="14" stroke-linecap="round" fill="none" opacity=".4"/>
+          <!-- side figures -->
+          <circle cx="110" cy="200" r="35" fill="#fff" opacity=".18"/>
+          <ellipse cx="110" cy="290" rx="42" ry="65" fill="#fff" opacity=".15"/>
+          <circle cx="370" cy="200" r="35" fill="#fff" opacity=".18"/>
+          <ellipse cx="370" cy="290" rx="42" ry="65" fill="#fff" opacity=".15"/>
+          <!-- stars -->
+          <text x="80" y="120" font-size="22" fill="#fff" opacity=".6">✦</text>
+          <text x="370" y="100" font-size="16" fill="#fff" opacity=".5">✦</text>
+          <text x="200" y="60" font-size="12" fill="#fff" opacity=".7">✦</text>
+          <text x="340" y="160" font-size="10" fill="#fff" opacity=".5">✦</text>
+          <rect width="480" height="500" fill="url(#g1)"/>
+          <!-- text overlay -->
+          <text x="240" y="440" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" font-style="italic" fill="#fff" opacity=".8">Together We Rise</text>
+        </svg>
+      </div>
+      <div class="hero-badge">
+        <div>
+          <div class="badge-num">12K+</div>
+          <div class="badge-text">Women<br>Empowered</div>
+        </div>
+      </div>
+      <div class="hero-tag2">Est. 2012</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Education</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Leadership</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Health &amp; Wellness</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Skill Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Financial Freedom</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Community Building</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mentorship</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Advocacy</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Education</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Leadership</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Health &amp; Wellness</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Skill Development</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Financial Freedom</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Community Building</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Mentorship</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Advocacy</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid reveal">
+    <div class="stat-box"><span class="stat-num">12,000+</span><div class="stat-label">Women Empowered</div></div>
+    <div class="stat-box"><span class="stat-num">48</span><div class="stat-label">Communities</div></div>
+    <div class="stat-box"><span class="stat-num">95%</span><div class="stat-label">Success Rate</div></div>
+    <div class="stat-box"><span class="stat-num">13</span><div class="stat-label">Years of Impact</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-mosaic reveal-left">
+    <div class="mosaic-a">
+      <svg viewBox="0 0 320 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="380" fill="#c2185b" opacity=".2"/>
+        <circle cx="160" cy="130" r="60" fill="#fff" opacity=".25"/>
+        <circle cx="160" cy="120" r="44" fill="#fff" opacity=".3"/>
+        <ellipse cx="160" cy="250" rx="56" ry="80" fill="#fff" opacity=".2"/>
+        <path d="M104 210 Q70 160 55 135" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".35"/>
+        <path d="M216 210 Q250 160 265 135" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".35"/>
+        <text x="160" y="345" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="18" font-style="italic" fill="#fff" opacity=".7">Education Changes Lives</text>
+      </svg>
+    </div>
+    <div class="mosaic-b">
+      <svg viewBox="0 0 280 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <rect width="280" height="320" fill="#7b1fa2" opacity=".3"/>
+        <circle cx="80" cy="110" r="38" fill="#fff" opacity=".2"/>
+        <ellipse cx="80" cy="200" rx="46" ry="65" fill="#fff" opacity=".18"/>
+        <circle cx="200" cy="90" r="30" fill="#fff" opacity=".2"/>
+        <ellipse cx="200" cy="170" rx="36" ry="55" fill="#fff" opacity=".15"/>
+        <circle cx="140" cy="130" r="25" fill="#fff" opacity=".25"/>
+        <text x="140" y="290" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="16" font-style="italic" fill="#fff" opacity=".7">Stronger Together</text>
+      </svg>
+    </div>
+    <div class="mosaic-quote">
+      <p>"Every girl has the power to change the world."</p>
+      <cite>— Our Founders</cite>
+    </div>
+  </div>
+  <div class="about-content reveal-right">
+    <div class="section-eyebrow">About Us</div>
+    <h2>We Believe <em>Every Woman</em> Deserves a Chance</h2>
+    <p>She Can Foundation is a non-profit organisation dedicated to uplifting women and girls through education, skill development, and community support. We work at the grassroots level to create lasting change.</p>
+    <p>From rural villages to urban communities, our programs reach women who have been left behind — giving them tools, confidence, and networks to rewrite their own stories.</p>
+    <ul class="mission-list">
+      <li><div class="mission-icon">✓</div> Providing scholarships and quality education to girls in need</li>
+      <li><div class="mission-icon">✓</div> Vocational training and entrepreneurship for economic independence</li>
+      <li><div class="mission-icon">✓</div> Mental health support and safe community spaces</li>
+      <li><div class="mission-icon">✓</div> Leadership development and civic advocacy programs</li>
+    </ul>
+    <a href="#programs" class="btn-primary">See Our Programs</a>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="programs-inner">
+    <div class="sec-head reveal">
+      <div class="section-eyebrow" style="justify-content:center">What We Do</div>
+      <h2>Programs That <em>Transform Lives</em></h2>
+      <p>Comprehensive support designed to empower women at every stage.</p>
+    </div>
+    <div class="prog-grid">
+      <div class="prog-card reveal">
+        <span class="prog-num">01</span>
+        <span class="prog-icon">📚</span>
+        <h3>Education First</h3>
+        <p>Scholarships, tutoring, and mentorship to keep girls in school and help them reach their full academic potential.</p>
+        <a href="#" class="prog-link">Learn more →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-num">02</span>
+        <span class="prog-icon">💼</span>
+        <h3>Skills &amp; Livelihood</h3>
+        <p>Vocational training and entrepreneurship workshops that open pathways to economic independence.</p>
+        <a href="#" class="prog-link">Learn more →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-num">03</span>
+        <span class="prog-icon">🌸</span>
+        <h3>Health &amp; Safety</h3>
+        <p>Awareness campaigns, counselling sessions, and support networks protecting women's health and dignity.</p>
+        <a href="#" class="prog-link">Learn more →</a>
+      </div>
+      <div class="prog-card reveal">
+        <span class="prog-num">04</span>
+        <span class="prog-icon">🏆</span>
+        <h3>Leadership Academy</h3>
+        <p>Nurturing the next generation of women leaders through advocacy, public speaking, and civic engagement.</p>
+        <a href="#" class="prog-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section" id="stories">
+  <span class="quote-mark reveal">"</span>
+  <blockquote class="reveal">
+    She Can Foundation gave me more than a scholarship — they gave me <em>belief in myself.</em> Today I run my own business and mentor 20 other girls.
+  </blockquote>
+  <div class="testi-author reveal">
+    <div class="author-avatar">P</div>
+    <div class="author-info">
+      <strong>Priya Sharma</strong>
+      <span>Program Graduate, 2019 · Pune, India</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <h2>Be Part of the <em>Change</em></h2>
+  <p>Your support helps us reach more women, fund more scholarships, and build a more equal world.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-white">Donate Today</a>
+    <a href="#" class="btn-ghost">Volunteer With Us</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">She <span>Can</span> Foundation</a>
+      <p>Transforming lives and communities through the power of empowered women. Every contribution shapes a better tomorrow.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">tw</a>
+        <a href="#" class="social-btn">ig</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#">Annual Report</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#">Donate</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Corporate Partners</a></li>
+        <li><a href="#">Campaigns</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">info@shecancfoundation.org</a></li>
+        <li><a href="#">+91 98765 43210</a></li>
+        <li><a href="#">New Delhi, India</a></li>
+        <li><a href="#">Mon–Fri, 9am–6pm IST</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 She Can Foundation. All rights reserved. Registered NGO.</span>
+    <span>Made with <span class="footer-heart">♥</span> for women everywhere</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const delay = el.dataset.delay || (i * 80);
+      setTimeout(() => el.classList.add('up'), parseInt(delay));
+      obs.unobserve(el);
+    }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
